@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GameOption } from './gameOption';
+import { GAMEOPTIONS } from './gameOptions';
 
 @Component({
   selector: 'app-game',
@@ -8,10 +9,13 @@ import { GameOption } from './gameOption';
 })
 export class GameComponent implements OnInit {
 
-  gameOption: GameOption = {
-    id: 1,
-    name: 'local'
-  };
+  gameOptions = GAMEOPTIONS;
+
+  selectedOption: GameOption;
+
+  onSelect(gameOption: GameOption): void {
+    this.selectedOption = gameOption;
+  }
 
   constructor() { }
 
