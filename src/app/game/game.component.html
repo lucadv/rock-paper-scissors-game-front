@@ -1,8 +1,8 @@
-<h2>Choose an option</h2>
+<h2>Choose an opponent</h2>
 <ul class="game">
-  <li *ngFor="let option of gameOptions"
-    [class.selected]="option === selectedOption"
-    (click)="onSelect(option)">
-    <span class="badge">{{option.id}}</span> {{option.name}}
+  <li *ngFor="let opponent of opponents"
+    [class.selected]="opponent === selectedOpponent"
+    (click)="onSelect(opponent)">
+    <span class="badge">{{opponent.id}}</span> {{opponent.name}}
   </li>
 </ul>

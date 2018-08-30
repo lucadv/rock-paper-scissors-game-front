@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { GameOption } from './gameOption';
-import { GAMEOPTIONS } from './gameOptions';
+import { Opponent } from './opponent';
+import { SELECTABLE_OPPONENTS } from './selectableOpponents';
 
 @Component({
   selector: 'app-game',
@@ -9,12 +9,12 @@ import { GAMEOPTIONS } from './gameOptions';
 })
 export class GameComponent implements OnInit {
 
-  gameOptions = GAMEOPTIONS;
+  opponents = SELECTABLE_OPPONENTS;
 
-  selectedOption: GameOption;
+  selectedOpponent: Opponent;
 
-  onSelect(gameOption: GameOption): void {
-    this.selectedOption = gameOption;
+  onSelect(opponent: Opponent): void {
+    this.selectedOpponent = opponent;
   }
 
   constructor() { }

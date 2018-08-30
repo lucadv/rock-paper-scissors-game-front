@@ -1,4 +1,4 @@
-export class GameOption {
+export class Opponent {
   id: number;
   name: string;
 }
