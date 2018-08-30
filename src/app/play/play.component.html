@@ -1,0 +1,8 @@
+<h2>Choose a shape</h2>
+<ul class="play">
+  <li *ngFor="let shape of playableShapes"
+    [class.selected]="shape === selectedShape"
+    (click)="onSelect(shape)">
+    <span class="badge">{{shape.id}}</span> {{shape.name}}
+  </li>
+</ul>
