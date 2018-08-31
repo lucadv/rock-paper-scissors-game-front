@@ -25,7 +25,8 @@ export class PlayComponent implements OnInit {
 
   onSelect(shape: Shape): void {
     this.selectedShape = shape;
-    this.opponentSelectedShape = this.playService.getShape();
+    this.playService.getShape()
+      .subscribe(shape => this.opponentSelectedShape = shape);
   }
 
 }
