@@ -10,7 +10,7 @@ export class PlayService {
   constructor() { }
 
   getShape(): Shape {
-    const shapeId = Math.floor(Math.random()*(2-0+1)+0);
+    const shapeId = Math.floor(Math.random()*(2-0+1)+1);
     return PLAYABLESHAPES.find(shape => shape.id === shapeId);
   }
 }
