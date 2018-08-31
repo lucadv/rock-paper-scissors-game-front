@@ -1,5 +1,5 @@
 <h2>Choose a shape</h2>
-<ul class="play">
+<ul class="shape-selector">
   <li *ngFor="let shape of playableShapes"
     [class.selected]="shape === playerSelectedShape"
     (click)="onSelect(shape)">

@@ -6,11 +6,11 @@ import { PlayService } from '../play.service';
 import { PLAYABLESHAPES } from '../playableShapes';
 
 @Component({
-  selector: 'app-play',
-  templateUrl: './play.component.html',
-  styleUrls: ['./play.component.css']
+  selector: 'app-shape-selector',
+  templateUrl: './shape-selector.component.html',
+  styleUrls: ['./shape-selector.component.css']
 })
-export class PlayComponent implements OnInit {
+export class ShapeSelectorComponent implements OnInit {
 
   playableShapes = PLAYABLESHAPES;
 

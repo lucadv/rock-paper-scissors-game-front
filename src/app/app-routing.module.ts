@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PlayComponent }      from './play/play.component';
+import { ShapeSelectorComponent } from './shape-selector/shape-selector.component';
 
 const routes: Routes = [
-  { path: 'play/:id', component: PlayComponent }
+  { path: 'shape-selection/:id', component: ShapeSelectorComponent }
 ];
 
 @NgModule({
