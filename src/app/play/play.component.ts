@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { Shape } from '../shape';
+import { PlayService } from '../play.service';
 import { PLAYABLESHAPES } from '../playableShapes';
 
 @Component({
@@ -15,13 +16,16 @@ export class PlayComponent implements OnInit {
 
   selectedShape: Shape;
 
-  constructor() { }
+  opponentSelectedShape: Shape;
+
+  constructor(private playService: PlayService) { }
 
   ngOnInit() {
   }
 
   onSelect(shape: Shape): void {
     this.selectedShape = shape;
+    this.opponentSelectedShape = this.playService.getShape();
   }
 
 }
