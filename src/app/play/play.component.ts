@@ -14,17 +14,21 @@ export class PlayComponent implements OnInit {
 
   playableShapes = PLAYABLESHAPES;
 
-  selectedShape: Shape;
+  playerSelectedShape: Shape;
 
   opponentSelectedShape: Shape;
 
-  constructor(private playService: PlayService) { }
+  playerWinsCounter = 0;
+
+  opponentWinsCounter = 0;
+
+  constructor(private playService: PlayService) {}
 
   ngOnInit() {
   }
 
   onSelect(shape: Shape): void {
-    this.selectedShape = shape;
+    this.playerSelectedShape = shape;
     this.playService.getShape()
       .subscribe(shape => this.opponentSelectedShape = shape);
   }
