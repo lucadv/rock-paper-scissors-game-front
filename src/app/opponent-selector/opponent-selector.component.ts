@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Opponent } from './opponent';
-import { SELECTABLE_OPPONENTS } from './selectableOpponents';
+import { Opponent } from '../opponent';
+import { SELECTABLE_OPPONENTS } from '../selectableOpponents';
 
 @Component({
   selector: 'app-opponent-selector',
