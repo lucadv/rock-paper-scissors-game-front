@@ -22,14 +22,19 @@ export class ShapeSelectorComponent implements OnInit {
 
   opponentWinsCounter = 0;
 
-  constructor(private playService: PlayService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private playService: PlayService,
+    private location: Location
+  ) {}
 
   ngOnInit() {
   }
 
   onSelect(shape: Shape): void {
     this.playerSelectedShape = shape;
-    this.playService.getShape()
+    const opponentType = this.route.snapshot.paramMap.get('opponentType');
+    this.playService.getShape(opponentType)
       .subscribe(shape => this.opponentSelectedShape = shape);
   }
 

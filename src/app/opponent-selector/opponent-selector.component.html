@@ -4,7 +4,7 @@
     [class.selected]="opponent === selectedOpponent"
     (click)="onSelect(opponent)">
 
-    <a routerLink="/shape-selection/{{opponent.id}}">
+    <a routerLink="/shape-selection/{{opponent.name}}">
       <span class="badge">{{opponent.id}}</span> {{opponent.name}}
     </a>
   </li>

@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ShapeSelectorComponent } from './shape-selector/shape-selector.component';
 
 const routes: Routes = [
-  { path: 'shape-selection/:id', component: ShapeSelectorComponent }
+  { path: 'shape-selection/:opponentType', component: ShapeSelectorComponent }
 ];
 
 @NgModule({
