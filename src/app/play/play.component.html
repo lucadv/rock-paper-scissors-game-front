@@ -6,4 +6,4 @@
     <span class="badge">{{shape.id}}</span> {{shape.name}}
   </li>
 </ul>
-<div>{{opponentSelectedShape.name}}</div>
+<div *ngIf="opponentSelectedShape">{{opponentSelectedShape.name}}</div>
