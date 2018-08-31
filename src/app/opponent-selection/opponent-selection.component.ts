@@ -3,11 +3,11 @@ import { Opponent } from './opponent';
 import { SELECTABLE_OPPONENTS } from './selectableOpponents';
 
 @Component({
-  selector: 'app-game',
-  templateUrl: './game.component.html',
-  styleUrls: ['./game.component.css']
+  selector: 'app-opponent-selection',
+  templateUrl: './opponent-selection.component.html',
+  styleUrls: ['./opponent-selection.component.css']
 })
-export class GameComponent implements OnInit {
+export class OpponentSelectionComponent implements OnInit {
 
   opponents = SELECTABLE_OPPONENTS;
 
