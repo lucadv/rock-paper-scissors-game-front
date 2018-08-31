@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 import { Shape } from './shape';
 import { PLAYABLESHAPES } from './playableShapes';
 

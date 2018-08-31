@@ -3,6 +3,9 @@
   <li *ngFor="let opponent of opponents"
     [class.selected]="opponent === selectedOpponent"
     (click)="onSelect(opponent)">
-    <span class="badge">{{opponent.id}}</span> {{opponent.name}}
+
+    <a routerLink="/play/{{opponent.id}}">
+      <span class="badge">{{opponent.id}}</span> {{opponent.name}}
+    </a>
   </li>
 </ul>
