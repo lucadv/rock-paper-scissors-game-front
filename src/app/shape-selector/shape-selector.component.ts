@@ -35,7 +35,6 @@ export class ShapeSelectorComponent implements OnInit {
   }
 
   setPlayResults(playResults: PlayResults) {
-    console.log('here', playResults);
     this.playResults = playResults;
     if (this.playResults.winner === 'player 1') {
       this.playerWinsCounter++;
@@ -46,8 +45,9 @@ export class ShapeSelectorComponent implements OnInit {
 
   onSelect(shape: Shape): void {
     this.playerSelectedShape = shape;
-    // const opponentType = this.route.snapshot.paramMap.get('opponentType');
-    this.playService.play(this.playerSelectedShape.name)
+    const opponentType = this.route.snapshot.paramMap.get('opponentType');
+    console.log(opponentType);
+    this.playService[opponentType]().play(this.playerSelectedShape.name)
       .subscribe(playResults => this.setPlayResults(playResults));
   }
 

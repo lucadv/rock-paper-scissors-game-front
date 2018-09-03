@@ -11,6 +11,8 @@ import { PlayResults } from './playResults';
 })
 export class PlayService {
 
+  opponentType: string;
+
   constructor(private messageService: MessageService) { }
 
   transformResults(res): PlayResults {
@@ -22,7 +24,31 @@ export class PlayService {
     return playResults;
   }
 
+  local() {
+    this.opponentType = 'remote';
+    return this;
+  }
+
+  remote() {
+    this.opponentType = 'remote';
+    return this;
+  }
+
   play(playerSelectedShape: string): Observable<PlayResults> {
+    if(this.opponentType === 'local') {
+      return this.playLocal(playerSelectedShape);
+    }
+    return this.playRemote(playerSelectedShape);
+  }
+
+  private playLocal(playerSelectedShape: string): Observable<PlayResults> {
+    const res = RPS(playerSelectedShape);
+    const playResults = this.transformResults(res);
+    this.messageService.add(`Opponent played: ${res.moves.player2}`);
+    return of(playResults);
+  }
+
+  private playRemote(playerSelectedShape: string): Observable<PlayResults> {
     const res = RPS(playerSelectedShape);
     const playResults = this.transformResults(res);
     this.messageService.add(`Opponent played: ${res.moves.player2}`);
