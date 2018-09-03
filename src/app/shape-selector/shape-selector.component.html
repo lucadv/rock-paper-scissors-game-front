@@ -9,6 +9,6 @@
 <div *ngIf="playerWinsCounter">Player wins: <b>{{playerWinsCounter}}</b></div><br>
 <div *ngIf="opponentWinsCounter">Opponent wins: <b>{{opponentWinsCounter}}</b></div>
 <div *ngIf="playResults">
-  <h2>You played {{playerSelectedShape.name}}, opponent played {{playResults.opponentMove}}</h2>
+  <h2>You played {{playResults.moves.player1}}, opponent played {{playResults.moves.player2}}</h2>
   <h3>{{playResults.message}}</h3>
 </div>
