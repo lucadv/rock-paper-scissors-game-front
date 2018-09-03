@@ -4,7 +4,7 @@ import { Location } from '@angular/common';
 import { Shape } from '../shape';
 import { PlayService } from '../play.service';
 import { MessageService } from '../message.service';
-import { CountersService } from '../counters.service';
+import { PlayResultsService } from '../playResults.service';
 import { PlayResults } from '../playResults';
 import { PLAYABLESHAPES } from '../playableShapes';
 
@@ -21,12 +21,10 @@ export class ShapeSelectorComponent implements OnInit {
 
   opponentSelectedShape: Shape;
 
-  playResults: PlayResults;
-
   constructor(
     private route: ActivatedRoute,
     private playService: PlayService,
-    private countersService: CountersService,
+    private playResultsService: PlayResultsService,
     private messageService: MessageService,
     private location: Location
   ) {}
@@ -35,15 +33,13 @@ export class ShapeSelectorComponent implements OnInit {
   }
 
   private setPlayResults(playResults: PlayResults): void {
-    this.playResults = playResults;
     this.messageService.add(`Opponent played: ${playResults.moves.player2}`);
-    this.countersService.incrementCounters(this.playResults);
+    this.playResultsService.setPlayResults(playResults);
   }
 
   onSelect(shape: Shape): void {
     this.playerSelectedShape = shape;
     const opponentType = this.route.snapshot.paramMap.get('opponentType');
-    console.log(opponentType);
     this.playService[opponentType]().play(this.playerSelectedShape.name)
       .subscribe(res => this.setPlayResults(res));
   }

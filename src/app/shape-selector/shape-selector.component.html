@@ -7,7 +7,4 @@
   </li>
 </ul>
 <app-counters></app-counters>
-<div *ngIf="playResults">
-  <h2>You played {{playResults.moves.player1}}, opponent played {{playResults.moves.player2}}</h2>
-  <h3>{{playResults.message}}</h3>
-</div>
+<app-play-results></app-play-results>
