@@ -47,7 +47,7 @@ export class ShapeSelectorComponent implements OnInit {
   onSelect(shape: Shape): void {
     this.playerSelectedShape = shape;
     // const opponentType = this.route.snapshot.paramMap.get('opponentType');
-    this.playService.getShape(this.playerSelectedShape.name)
+    this.playService.play(this.playerSelectedShape.name)
       .subscribe(playResults => this.setPlayResults(playResults));
   }
 

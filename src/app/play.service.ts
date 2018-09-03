@@ -22,7 +22,7 @@ export class PlayService {
     return playResults;
   }
 
-  getShape(playerSelectedShape: string): Observable<PlayResults> {
+  play(playerSelectedShape: string): Observable<PlayResults> {
     const res = RPS(playerSelectedShape);
     const playResults = this.transformResults(res);
     this.messageService.add(`Opponent played: ${res.moves.player2}`);
