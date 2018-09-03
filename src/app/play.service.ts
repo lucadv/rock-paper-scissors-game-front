@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Shape } from './shape';
+import { MessageService } from './message.service';
 import { PLAYABLESHAPES } from './playableShapes';
 import RPS from '@lucadv/rock-paper-scissors';
 
@@ -9,11 +10,11 @@ import RPS from '@lucadv/rock-paper-scissors';
 })
 export class PlayService {
 
-  constructor() { }
+  constructor(private messageService: MessageService) { }
 
   getShape(playerSelectedShape: string): Observable<Shape> {
     const result = RPS(playerSelectedShape);
-    console.log(result);
+    this.messageService.add(`Opponent played: ${result.moves.player2}`);
     return of(result);
   }
 }
