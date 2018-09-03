@@ -6,6 +6,9 @@
     <span class="badge">{{shape.id}}</span> {{shape.name}}
   </li>
 </ul>
-<div *ngIf="opponentSelectedShape">
-  <h2>Opponent choose {{opponentSelectedShape.name}}</h2>
+<div *ngIf="playerWinsCounter">Player wins: <b>{{playerWinsCounter}}</b></div><br>
+<div *ngIf="opponentWinsCounter">Opponent wins: <b>{{opponentWinsCounter}}</b></div>
+<div *ngIf="playResults">
+  <h2>You played {{playerSelectedShape.name}}, opponent played {{playResults.opponentMove}}</h2>
+  <h3>{{playResults.message}}</h3>
 </div>
