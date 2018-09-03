@@ -32,8 +32,8 @@ export class ShapeSelectorComponent implements OnInit {
   ngOnInit() {
   }
 
-  private setPlayResults(playResults: PlayResults): void {
-    this.messageService.add(`Opponent played: ${playResults.moves.player2}`);
+  private processResults(playResults: PlayResults): void {
+    this.messageService.add(`Player: ${playResults.moves.player1}, opponent: ${playResults.moves.player2}`);
     this.playResultsService.setPlayResults(playResults);
   }
 
@@ -41,7 +41,7 @@ export class ShapeSelectorComponent implements OnInit {
     this.playerSelectedShape = shape;
     const opponentType = this.route.snapshot.paramMap.get('opponentType');
     this.playService[opponentType]().play(this.playerSelectedShape.name)
-      .subscribe(res => this.setPlayResults(res));
+      .subscribe(res => this.processResults(res));
   }
 
 }
