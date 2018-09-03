@@ -1,0 +1,11 @@
+<h2>Choose an opponent</h2>
+<ul class="opponent-selector">
+  <li *ngFor="let opponent of opponents"
+    [class.selected]="opponent === selectedOpponent"
+    (click)="onSelect(opponent)">
+
+    <a routerLink="/shape-selection/{{opponent.name}}">
+      <span class="badge">{{opponent.id}}</span> {{opponent.name}}
+    </a>
+  </li>
+</ul>
