@@ -4,8 +4,8 @@ import { Location } from '@angular/common';
 import { Shape } from '../shape';
 import { PlayService } from '../play.service';
 import { MessageService } from '../message.service';
-import { PlayResultsService } from '../playResults.service';
-import { PlayResults } from '../playResults';
+import { MatchResultsService } from '../matchResults.service';
+import { MatchResults } from '../matchResults';
 import { PLAYABLESHAPES } from '../playableShapes';
 
 @Component({
@@ -24,7 +24,7 @@ export class ShapeSelectorComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private playService: PlayService,
-    private playResultsService: PlayResultsService,
+    private matchResultsService: MatchResultsService,
     private messageService: MessageService,
     private location: Location
   ) {}
@@ -32,9 +32,9 @@ export class ShapeSelectorComponent implements OnInit {
   ngOnInit() {
   }
 
-  private processResults(playResults: PlayResults): void {
-    this.messageService.add(`Player: ${playResults.moves.player1}, opponent: ${playResults.moves.player2}`);
-    this.playResultsService.setPlayResults(playResults);
+  private processResults(matchResults: MatchResults): void {
+    this.messageService.add(`Player: ${matchResults.moves.player1}, opponent: ${matchResults.moves.player2}`);
+    this.matchResultsService.setMatchResults(matchResults);
   }
 
   onSelect(shape: Shape): void {

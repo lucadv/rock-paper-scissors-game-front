@@ -8,7 +8,7 @@ import { ShapeSelectorComponent } from './shape-selector/shape-selector.componen
 import { AppRoutingModule } from './/app-routing.module';
 import { MessagesComponent } from './messages/messages.component';
 import { CountersComponent } from './counters/counters.component';
-import { PlayResultsComponent } from './play-results/play-results.component';
+import { MatchResultsComponent } from './match-results/match-results.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,7 @@ import { PlayResultsComponent } from './play-results/play-results.component';
     ShapeSelectorComponent,
     MessagesComponent,
     CountersComponent,
-    PlayResultsComponent
+    MatchResultsComponent
   ],
   imports: [
     BrowserModule,
