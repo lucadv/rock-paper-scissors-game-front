@@ -6,6 +6,9 @@ export const environment = {
   production: false
 };
 
+export const serverlessUrl = 'https://4s9wed9e65.execute-api.eu-west-1.amazonaws.com/mvp/play';
+export const serverUrl = 'https://lucadv-rock-paper-scissors.herokuapp.com/play';
+
 /*
  * In development mode, for easier debugging, you can ignore zone related error
  * stack frames such as `zone.run`/`zoneDelegate.invokeTask` by importing the

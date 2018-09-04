@@ -7,6 +7,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { PLAYABLESHAPES } from './playableShapes';
 import RPS from '@lucadv/rock-paper-scissors';
 import { MatchResults, Moves } from './matchResults';
+import { environment, serverUrl, serverlessUrl } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -15,14 +16,13 @@ export class PlayService {
 
   private opponentType: string;
 
-  private remoteUrl = 'https://4s9wed9e65.execute-api.eu-west-1.amazonaws.com/mvp/play'; // @todo HARDCODED, CHANGE IT
+  private remoteUrl = environment.production ? serverUrl : serverlessUrl;
 
   constructor(
     private http: HttpClient,
     private messageService: MessageService) { }
 
   private log(message: string) {
-    console.log(message);
     this.messageService.add(`Play service: ${message}`);
   }
 
