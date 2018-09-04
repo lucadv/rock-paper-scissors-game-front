@@ -6,7 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import { PLAYABLESHAPES } from './playableShapes';
 import RPS from '@lucadv/rock-paper-scissors';
-import { PlayResults, Moves } from './playResults';
+import { MatchResults, Moves } from './matchResults';
 
 @Injectable({
   providedIn: 'root'
@@ -56,20 +56,20 @@ export class PlayService {
     return this;
   }
 
-  play(playerSelectedShape: string): Observable<PlayResults> {
+  play(playerSelectedShape: string): Observable<MatchResults> {
     if(this.opponentType === 'local') {
       return this.playLocal(playerSelectedShape);
     }
     return this.playRemote(playerSelectedShape);
   }
 
-  private playLocal(playerSelectedShape: string): Observable<PlayResults> {
-    const playResults = RPS<PlayResults>(playerSelectedShape);
+  private playLocal(playerSelectedShape: string): Observable<MatchResults> {
+    const playResults = RPS<MatchResults>(playerSelectedShape);
     return of(playResults);
   }
 
-  private playRemote(playerSelectedShape: string): Observable<PlayResults> {
+  private playRemote(playerSelectedShape: string): Observable<MatchResults> {
     const options = { params: { withPlayerMove: playerSelectedShape } }
-    return this.http.get<PlayResults>(this.remoteUrl, options); //@todo pipe error handling
+    return this.http.get<MatchResults>(this.remoteUrl, options); //@todo pipe error handling
   }
 }

@@ -7,13 +7,17 @@ import { OpponentSelectorComponent } from './opponent-selector/opponent-selector
 import { ShapeSelectorComponent } from './shape-selector/shape-selector.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { MessagesComponent } from './messages/messages.component';
+import { CountersComponent } from './counters/counters.component';
+import { MatchResultsComponent } from './match-results/match-results.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     OpponentSelectorComponent,
     ShapeSelectorComponent,
-    MessagesComponent
+    MessagesComponent,
+    CountersComponent,
+    MatchResultsComponent
   ],
   imports: [
     BrowserModule,

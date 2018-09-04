@@ -4,7 +4,8 @@ import { Location } from '@angular/common';
 import { Shape } from '../shape';
 import { PlayService } from '../play.service';
 import { MessageService } from '../message.service';
-import { PlayResults } from '../playResults';
+import { MatchResultsService } from '../matchResults.service';
+import { MatchResults } from '../matchResults';
 import { PLAYABLESHAPES } from '../playableShapes';
 
 @Component({
@@ -20,15 +21,10 @@ export class ShapeSelectorComponent implements OnInit {
 
   opponentSelectedShape: Shape;
 
-  playerWinsCounter = 0;
-
-  opponentWinsCounter = 0;
-
-  playResults: PlayResults;
-
   constructor(
     private route: ActivatedRoute,
     private playService: PlayService,
+    private matchResultsService: MatchResultsService,
     private messageService: MessageService,
     private location: Location
   ) {}
@@ -36,26 +32,16 @@ export class ShapeSelectorComponent implements OnInit {
   ngOnInit() {
   }
 
-  private setPlayResults(playResults: PlayResults): void {
-    this.playResults = playResults;
-    this.messageService.add(`Opponent played: ${playResults.moves.player2}`);
-    this.incrementCounters();
-  }
-
-  private incrementCounters(): void {
-    if (this.playResults.winner === 'player 1') {
-      this.playerWinsCounter++;
-    } else if (this.playResults.winner === 'player 2') {
-      this.opponentWinsCounter++;
-    }
+  private processResults(matchResults: MatchResults): void {
+    this.messageService.add(`Player: ${matchResults.moves.player1}, opponent: ${matchResults.moves.player2}`);
+    this.matchResultsService.setMatchResults(matchResults);
   }
 
   onSelect(shape: Shape): void {
     this.playerSelectedShape = shape;
     const opponentType = this.route.snapshot.paramMap.get('opponentType');
-    console.log(opponentType);
     this.playService[opponentType]().play(this.playerSelectedShape.name)
-      .subscribe(res => this.setPlayResults(res));
+      .subscribe(res => this.processResults(res));
   }
 
 }
