@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { AppRoutingModule } from '../app-routing.module';
 
 import { OpponentSelectorComponent } from './opponent-selector.component';
 
@@ -8,7 +9,10 @@ describe('OpponentSelectorComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ OpponentSelectorComponent ]
+      declarations: [ OpponentSelectorComponent ],
+      imports: [
+        AppRoutingModule
+      ]
     })
     .compileComponents();
   }));
