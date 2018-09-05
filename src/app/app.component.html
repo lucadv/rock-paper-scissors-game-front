@@ -1,8 +1,38 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>{{ title }}</h1>
-  <app-opponent-selector></app-opponent-selector>
-  <router-outlet></router-outlet>
-  <app-messages></app-messages>
+<app-nav></app-nav>
+<h1>{{ title }}</h1>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <app-opponent-selector></app-opponent-selector>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="card">
+          <div class="card-body">
+            <router-outlet></router-outlet>
+          </div>
+        </div>
+    </div>
+  </div>
+  <div class="row">
+      <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <app-match-results></app-match-results>
+            </div>
+          </div>
+      </div>
+      <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+                <app-counters></app-counters>
+            </div>
+          </div>
+      </div>
+  </div>
 </div>
-
+<app-messages></app-messages>
+<app-footer></app-footer>
