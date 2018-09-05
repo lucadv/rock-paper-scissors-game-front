@@ -9,6 +9,8 @@ import { AppRoutingModule } from './/app-routing.module';
 import { MessagesComponent } from './messages/messages.component';
 import { CountersComponent } from './counters/counters.component';
 import { MatchResultsComponent } from './match-results/match-results.component';
+import { NavComponent } from './nav/nav.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { MatchResultsComponent } from './match-results/match-results.component';
     ShapeSelectorComponent,
     MessagesComponent,
     CountersComponent,
-    MatchResultsComponent
+    MatchResultsComponent,
+    NavComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

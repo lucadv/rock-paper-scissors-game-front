@@ -1,4 +1,29 @@
-<div *ngIf="matchResultsService.matchResults">
-  <h2>You played {{matchResultsService.matchResults.moves.player1}}, opponent played {{matchResultsService.matchResults.moves.player2}}</h2>
-  <h3>{{matchResultsService.matchResults.message}}</h3>
+<div>
+  <h3>Match Results</h3>
+  <div class="table-responsive">
+      <table class="table">
+          <thead>
+              <tr>
+                <th scope="col">Your move</th>
+                <th scope="col">Opponent's move</th>
+              </tr>
+          </thead>
+          <tbody *ngIf="matchResultsService.matchResults">
+              <tr>
+                <td>{{matchResultsService.matchResults.moves.player1}}</td>
+                <td>{{matchResultsService.matchResults.moves.player2}}</td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+  <div *ngIf="matchResultsService.matchResults">
+    <p *ngIf="matchResultsService.matchResults.winner === 'player 1'" 
+      class="text-primary">{{matchResultsService.matchResults.message}} YOU WIN</p>
+
+    <p *ngIf="matchResultsService.matchResults.winner === 'player 2'" 
+      class="text-danger">{{matchResultsService.matchResults.message}} YOU LOOSE</p>
+    
+    <p *ngIf="matchResultsService.matchResults.tie === true" 
+      class="text-secondary">{{matchResultsService.matchResults.message}}</p>
+  </div>
 </div>

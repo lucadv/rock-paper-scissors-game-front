@@ -1,10 +1,9 @@
-<h2>Choose a shape</h2>
-<ul class="shape-selector">
-  <li *ngFor="let shape of playableShapes"
-    [class.selected]="shape === playerSelectedShape"
+<h3>Choose a shape</h3>
+<div class="list-group">
+  <a class="list-group-item list-group-item-action"
+    *ngFor="let shape of playableShapes"
+    [class.active]="shape === playerSelectedShape"
     (click)="onSelect(shape)">
-    <span class="badge">{{shape.id}}</span> {{shape.name}}
-  </li>
-</ul>
-<app-counters></app-counters>
-<app-match-results></app-match-results>
+      {{shape.name}}
+  </a>
+</div>
