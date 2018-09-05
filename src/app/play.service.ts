@@ -6,7 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import { PLAYABLESHAPES } from './playableShapes';
 import RPS from '@lucadv/rock-paper-scissors';
-import { MatchResults, Moves } from './matchResults';
+import { MatchResults } from './matchResults';
 import { environment, serverUrl, serverlessUrl } from '../environments/environment';
 
 @Injectable({
@@ -15,6 +15,8 @@ import { environment, serverUrl, serverlessUrl } from '../environments/environme
 export class PlayService {
 
   private opponentType: string;
+
+  private playerSelectedShape: string;
 
   private remoteUrl = environment.production ? serverUrl : serverlessUrl;
 
@@ -26,23 +28,31 @@ export class PlayService {
     this.messageService.add(`Play service: ${message}`);
   }
 
+  private getErrorResults(errorMessage: string): MatchResults {
+    const errorResult: MatchResults = {
+      winner: 'none',
+      tie: true,
+      message: errorMessage,
+      moves: {
+        player1: this.playerSelectedShape,
+        player2: '' 
+      }
+    };
+    return errorResult;
+  }
+
   /**
    * Handle Http operation that failed.
    * Let the app continue.
    * @param operation - name of the operation that failed
    * @param result - optional value to return as the observable result
    */
-  private handleError<T> (operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-  
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-  
+  private handleError<MatchResults> (operation = 'operation') {
+    return (error: any): Observable<any> => {
       // TODO: better job of transforming error for user consumption
       this.log(`${operation} failed: ${error.message}`);
-  
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
+      // Return an error result that the app can actually understand
+      return of(this.getErrorResults(error.message));
     };
   }
 
@@ -57,6 +67,7 @@ export class PlayService {
   }
 
   play(playerSelectedShape: string): Observable<MatchResults> {
+    this.playerSelectedShape = playerSelectedShape;
     if(this.opponentType === 'local') {
       return this.playLocal(playerSelectedShape);
     }
@@ -70,6 +81,8 @@ export class PlayService {
 
   private playRemote(playerSelectedShape: string): Observable<MatchResults> {
     const options = { params: { withPlayerMove: playerSelectedShape } }
-    return this.http.get<MatchResults>(this.remoteUrl, options); //@todo pipe error handling
+    return this.http.get<MatchResults>(this.remoteUrl, options).pipe(
+      catchError(this.handleError('GET'))
+    );
   }
 }
