@@ -18,7 +18,7 @@ export class PlayService {
 
   private playerSelectedShape: string;
 
-  private remoteUrl = environment.production ? serverUrl : serverlessUrl;
+  private remoteUrl: string;
 
   constructor(
     private http: HttpClient,
@@ -61,8 +61,15 @@ export class PlayService {
     return this;
   }
 
-  remote() {
+  server() {
     this.opponentType = 'remote';
+    this.remoteUrl = serverUrl;
+    return this;
+  }
+
+  serverless() {
+    this.opponentType = 'remote';
+    this.remoteUrl = serverlessUrl;
     return this;
   }
 
