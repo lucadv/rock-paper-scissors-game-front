@@ -1,13 +1,7 @@
 <app-nav></app-nav>
 <div class="container-fluid">
+  <h2>{{title}}</h2>
   <div class="row">
-    <div class="col-sm-6">
-      <div class="card">
-        <div class="card-body">
-          <app-opponent-selector></app-opponent-selector>
-        </div>
-      </div>
-    </div>
     <div class="col-sm-6">
         <div class="card">
           <div class="card-body">
@@ -15,15 +9,15 @@
           </div>
         </div>
     </div>
-  </div>
-  <div class="row">
-      <div class="col-sm-6">
-          <div class="card">
-            <div class="card-body">
-              <app-match-results></app-match-results>
-            </div>
+    <div class="col-sm-6">
+        <div class="card">
+          <div class="card-body">
+            <app-match-results></app-match-results>
           </div>
-      </div>
+        </div>
+    </div>
+  </div>
+  <div class="row">   
       <div class="col-sm-6">
           <div class="card">
             <div class="card-body">
@@ -31,11 +25,13 @@
             </div>
           </div>
       </div>
-  </div>
-  <div class="card">
-    <div class="card-body">
-      <app-messages></app-messages>
-    </div>
+      <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+                <app-messages></app-messages>
+            </div>
+          </div>
+      </div>
   </div>
 </div>
 <app-footer></app-footer>

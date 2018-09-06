@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Opponent } from '../opponent';
+import { MessageService } from '../message.service';
+import { SELECTABLE_OPPONENTS } from '../selectableOpponents';
 
 @Component({
   selector: 'app-nav',
@@ -9,9 +12,19 @@ export class NavComponent implements OnInit {
 
   title = 'Rock, paper, scissors game';
   
-  constructor() { }
+  opponents = SELECTABLE_OPPONENTS;
 
+  selectedOpponent: Opponent;
+
+  constructor(private messageService: MessageService) { }
+  
   ngOnInit() {
   }
+
+  onSelect(opponent: Opponent): void {
+    this.messageService.add(`Selected ${opponent.name} opponent`);
+    this.selectedOpponent = opponent;
+  }
+
 
 }
