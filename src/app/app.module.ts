@@ -4,7 +4,6 @@ import { HttpClientModule }    from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { ShapeSelectorComponent } from './shape-selector/shape-selector.component';
-import { AppRoutingModule } from './/app-routing.module';
 import { MessagesComponent } from './messages/messages.component';
 import { CountersComponent } from './counters/counters.component';
 import { MatchResultsComponent } from './match-results/match-results.component';
@@ -23,8 +22,7 @@ import { FooterComponent } from './footer/footer.component';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
-    AppRoutingModule
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

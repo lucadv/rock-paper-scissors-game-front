@@ -22,7 +22,13 @@ export class PlayService {
 
   constructor(
     private http: HttpClient,
-    private messageService: MessageService) { }
+    private messageService: MessageService) {
+      this.setDefaults();
+     }
+
+  private setDefaults(): void {
+    this.setOpponent('local');
+  }
 
   private log(message: string) {
     this.messageService.add(`Play service: ${message}`);
@@ -56,21 +62,13 @@ export class PlayService {
     };
   }
 
-  local() {
-    this.opponentType = 'local';
-    return this;
-  }
-
-  server() {
-    this.opponentType = 'remote';
-    this.remoteUrl = serverUrl;
-    return this;
-  }
-
-  serverless() {
-    this.opponentType = 'remote';
-    this.remoteUrl = serverlessUrl;
-    return this;
+  setOpponent(opponentType: string) {
+    this.opponentType = opponentType;
+    if (this.opponentType === 'server') {
+      this.remoteUrl = serverUrl;
+    } else  if (this.opponentType === 'serverless') {
+      this.remoteUrl = serverlessUrl;
+    }
   }
 
   play(playerSelectedShape: string): Observable<MatchResults> {
@@ -87,7 +85,7 @@ export class PlayService {
   }
 
   private playRemote(playerSelectedShape: string): Observable<MatchResults> {
-    const options = { params: { withPlayerMove: playerSelectedShape } }
+    const options = { params: { withPlayerMove: playerSelectedShape } };
     return this.http.get<MatchResults>(this.remoteUrl, options).pipe(
       catchError(this.handleError('GET'))
     );

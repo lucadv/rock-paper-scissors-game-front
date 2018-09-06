@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
 import { Shape } from '../shape';
 import { PlayService } from '../play.service';
 import { MessageService } from '../message.service';
@@ -21,15 +19,16 @@ export class ShapeSelectorComponent implements OnInit {
 
   opponentSelectedShape: Shape;
 
+  opponentType: string;
+
   constructor(
-    private route: ActivatedRoute,
     private playService: PlayService,
     private matchResultsService: MatchResultsService,
-    private messageService: MessageService,
-    private location: Location
+    private messageService: MessageService
   ) {}
 
   ngOnInit() {
+    this.opponentType = 'local';
   }
 
   private processResults(matchResults: MatchResults): void {
@@ -39,8 +38,7 @@ export class ShapeSelectorComponent implements OnInit {
 
   onSelect(shape: Shape): void {
     this.playerSelectedShape = shape;
-    const opponentType = this.route.snapshot.paramMap.get('opponentType');
-    this.playService[opponentType]().play(this.playerSelectedShape.name)
+    this.playService.play(this.playerSelectedShape.name)
       .subscribe(res => this.processResults(res));
   }
 

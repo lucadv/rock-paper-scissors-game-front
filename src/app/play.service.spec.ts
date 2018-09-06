@@ -37,7 +37,8 @@ describe('PlayService', () =>{
     describe('Local opponent', () => {
 
       it('should return a matchResult', (done: DoneFn) => {
-        playService.local().play('rock')
+        playService.setOpponent('local');
+        playService.play('rock')
           .subscribe((res: MatchResults) => {
             done();
           });
@@ -51,7 +52,8 @@ describe('PlayService', () =>{
         describe('(with successfull request)', () => {
 
           it('should return a matchResult', (done: DoneFn) => {
-            playService.server().play('rock')
+            playService.setOpponent('server');
+            playService.play('rock')
               .subscribe((res: MatchResults) => {
                 done();
               });
@@ -64,7 +66,8 @@ describe('PlayService', () =>{
         describe('(with error)', () => {
   
           it('should return a MatchResult error that the app can understand', (done: DoneFn) => {
-            playService.server().play('rock')
+            playService.setOpponent('server');
+            playService.play('rock')
               .subscribe((res: MatchResults) => {
                 expect(res.winner).toBe('none');
                 expect(res.tie).toBe(true);
@@ -85,7 +88,8 @@ describe('PlayService', () =>{
         describe('(with successfull request)', () => {
 
           it('should return a matchResult', (done: DoneFn) => {
-            playService.serverless().play('rock')
+            playService.setOpponent('serverless');
+            playService.play('rock')
               .subscribe((res: MatchResults) => {
                 done();
               });
@@ -98,7 +102,8 @@ describe('PlayService', () =>{
         describe('(with error)', () => {
   
           it('should return a MatchResult error that the app can understand', (done: DoneFn) => {
-            playService.serverless().play('rock')
+            playService.setOpponent('serverless');
+            playService.play('rock')
               .subscribe((res: MatchResults) => {
                 expect(res.winner).toBe('none');
                 expect(res.tie).toBe(true);

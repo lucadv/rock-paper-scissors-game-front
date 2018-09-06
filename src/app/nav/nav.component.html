@@ -6,7 +6,7 @@
             class="nav-item"
             [class.active]="opponent === selectedOpponent"
             (click)="onSelect(opponent)"
-            routerLink="/shape-selection/{{opponent.name}}">
+            >
             <a class="nav-link" >{{opponent.name}} <span *ngIf="opponent === selectedOpponent" class="sr-only">(current)</span></a>
           </li>
         </ul>
